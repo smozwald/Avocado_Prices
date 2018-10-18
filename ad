@@ -1,0 +1,2057 @@
+Help on package numpy:
+
+NNAAMMEE
+    numpy
+
+DDEESSCCRRIIPPTTIIOONN
+    NumPy
+    =====
+    
+    Provides
+      1. An array object of arbitrary homogeneous items
+      2. Fast mathematical operations over arrays
+      3. Linear Algebra, Fourier Transforms, Random Number Generation
+    
+    How to use the documentation
+    ----------------------------
+    Documentation is available in two forms: docstrings provided
+    with the code, and a loose standing reference guide, available from
+    `the NumPy homepage <http://www.scipy.org>`_.
+    
+    We recommend exploring the docstrings using
+    `IPython <http://ipython.scipy.org>`_, an advanced Python shell with
+    TAB-completion and introspection capabilities.  See below for further
+    instructions.
+    
+    The docstring examples assume that `numpy` has been imported as `np`::
+    
+      >>> import numpy as np
+    
+    Code snippets are indicated by three greater-than signs::
+    
+      >>> x = 42
+      >>> x = x + 1
+    
+    Use the built-in ``help`` function to view a function's docstring::
+    
+      >>> help(np.sort)
+      ... # doctest: +SKIP
+    
+    For some objects, ``np.info(obj)`` may provide additional help.  This is
+    particularly true if you see the line "Help on ufunc object:" at the top
+    of the help() page.  Ufuncs are implemented in C, not Python, for speed.
+    The native Python help() does not know how to view their help, but our
+    np.info() function does.
+    
+    To search for documents containing a keyword, do::
+    
+      >>> np.lookfor('keyword')
+      ... # doctest: +SKIP
+    
+    General-purpose documents like a glossary and help on the basic concepts
+    of numpy are available under the ``doc`` sub-module::
+    
+      >>> from numpy import doc
+      >>> help(doc)
+      ... # doctest: +SKIP
+    
+    Available subpackages
+    ---------------------
+    doc
+        Topical documentation on broadcasting, indexing, etc.
+    lib
+        Basic functions used by several sub-packages.
+    random
+        Core Random Tools
+    linalg
+        Core Linear Algebra Tools
+    fft
+        Core FFT routines
+    polynomial
+        Polynomial tools
+    testing
+        NumPy testing tools
+    f2py
+        Fortran to Python Interface Generator.
+    distutils
+        Enhancements to distutils with support for
+        Fortran compilers support and more.
+    
+    Utilities
+    ---------
+    test
+        Run numpy unittests
+    show_config
+        Show numpy build configuration
+    dual
+        Overwrite certain functions with high-performance Scipy tools
+    matlib
+        Make everything matrices.
+    __version__
+        NumPy version string
+    
+    Viewing documentation using IPython
+    -----------------------------------
+    Start IPython with the NumPy profile (``ipython -p numpy``), which will
+    import `numpy` under the alias `np`.  Then, use the ``cpaste`` command to
+    paste examples into the shell.  To see which functions are available in
+    `numpy`, type ``np.<TAB>`` (where ``<TAB>`` refers to the TAB key), or use
+    ``np.*cos*?<ENTER>`` (where ``<ENTER>`` refers to the ENTER key) to narrow
+    down the list.  To view the docstring for a function, use
+    ``np.cos?<ENTER>`` (to view the docstring) and ``np.cos??<ENTER>`` (to view
+    the source code).
+    
+    Copies vs. in-place operation
+    -----------------------------
+    Most of the functions in `numpy` return a copy of the array argument
+    (e.g., `np.sort`).  In-place versions of these functions are often
+    available as array methods, i.e. ``x = np.array([1,2,3]); x.sort()``.
+    Exceptions to this rule are documented.
+
+PPAACCKKAAGGEE  CCOONNTTEENNTTSS
+    __config__
+    _distributor_init
+    _globals
+    _import_tools
+    _mklinit
+    add_newdocs
+    compat (package)
+    conftest
+    core (package)
+    ctypeslib
+    distutils (package)
+    doc (package)
+    dual
+    f2py (package)
+    fft (package)
+    lib (package)
+    linalg (package)
+    ma (package)
+    matlib
+    matrixlib (package)
+    polynomial (package)
+    random (package)
+    random_intel (package)
+    setup
+    testing (package)
+    tests (package)
+    version
+
+SSUUBBMMOODDUULLEESS
+    _mat
+    char
+    emath
+    rec
+
+CCLLAASSSSEESS
+    builtins.DeprecationWarning(builtins.Warning)
+        numpy._globals.ModuleDeprecationWarning
+    builtins.IndexError(builtins.LookupError)
+        numpy.core._internal.AxisError(builtins.ValueError, builtins.IndexError)
+    builtins.RuntimeError(builtins.Exception)
+        numpy.core._internal.TooHardError
+    builtins.RuntimeWarning(builtins.Warning)
+        numpy.core.numeric.ComplexWarning
+    builtins.UserWarning(builtins.Warning)
+        numpy._globals.VisibleDeprecationWarning
+        numpy.lib.polynomial.RankWarning
+    builtins.ValueError(builtins.Exception)
+        numpy.core._internal.AxisError(builtins.ValueError, builtins.IndexError)
+    builtins.bytes(builtins.object)
+        bytes_(builtins.bytes, character)
+    builtins.object
+        builtins.int
+        builtins.str
+            str_(builtins.str, character)
+        broadcast
+        busdaycalendar
+        dtype
+        flatiter
+        generic
+            bool_
+            datetime64
+            flexible
+                character
+                    bytes_(builtins.bytes, character)
+                void
+                    record
+            number
+                inexact
+                    complexfloating
+                        complex128(complexfloating, builtins.complex)
+                        complex256
+                        complex64
+                    floating
+                        float128
+                        float16
+                        float32
+                        float64(floating, builtins.float)
+                integer
+                    signedinteger
+                        int16
+                        int32
+                        int64
+                        int64
+                        int8
+                        timedelta64
+                    unsignedinteger
+                        uint16
+                        uint32
+                        uint64
+                        uint64
+                        uint8
+            object_
+        ndarray
+            recarray
+            numpy.core.defchararray.chararray
+            numpy.core.memmap.memmap
+            numpy.matrixlib.defmatrix.matrix
+        nditer
+        ufunc
+        numpy._import_tools.PackageLoader
+        numpy.core.getlimits.finfo
+        numpy.core.getlimits.iinfo
+        numpy.core.machar.MachAr
+        numpy.core.numeric.errstate
+        numpy.core.records.format_parser
+        numpy.lib._datasource.DataSource
+        numpy.lib.function_base.vectorize
+        numpy.lib.index_tricks.ndenumerate
+        numpy.lib.index_tricks.ndindex
+        numpy.lib.polynomial.poly1d
+    
+    class AAxxiissEErrrroorr(builtins.ValueError, builtins.IndexError)
+     |  Axis supplied was invalid.
+     |  
+     |  Method resolution order:
+     |      AxisError
+     |      builtins.ValueError
+     |      builtins.IndexError
+     |      builtins.LookupError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____iinniitt____(self, axis, ndim=None, msg_prefix=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.ValueError:
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  ____ddeellaattttrr____(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____sseettaattttrr____(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  wwiitthh__ttrraacceebbaacckk(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  ____ccaauussee____
+     |      exception cause
+     |  
+     |  ____ccoonntteexxtt____
+     |      exception context
+     |  
+     |  ____ddiicctt____
+     |  
+     |  ____ssuupppprreessss__ccoonntteexxtt____
+     |  
+     |  ____ttrraacceebbaacckk____
+     |  
+     |  aarrggss
+    
+    class CCoommpplleexxWWaarrnniinngg(builtins.RuntimeWarning)
+     |  The warning raised when casting a complex dtype to a real dtype.
+     |  
+     |  As implemented, casting a complex number to a real discards its imaginary
+     |  part, but this behavior may not be what the user actually wants.
+     |  
+     |  Method resolution order:
+     |      ComplexWarning
+     |      builtins.RuntimeWarning
+     |      builtins.Warning
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.RuntimeWarning:
+     |  
+     |  ____iinniitt____(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  ____ddeellaattttrr____(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____sseettaattttrr____(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  wwiitthh__ttrraacceebbaacckk(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  ____ccaauussee____
+     |      exception cause
+     |  
+     |  ____ccoonntteexxtt____
+     |      exception context
+     |  
+     |  ____ddiicctt____
+     |  
+     |  ____ssuupppprreessss__ccoonntteexxtt____
+     |  
+     |  ____ttrraacceebbaacckk____
+     |  
+     |  aarrggss
+    
+    class DDaattaaSSoouurrccee(builtins.object)
+     |  DataSource(destpath='.')
+     |  
+     |  A generic data source file (file, http, ftp, ...).
+     |  
+     |  DataSources can be local files or remote files/URLs.  The files may
+     |  also be compressed or uncompressed. DataSource hides some of the
+     |  low-level details of downloading the file, allowing you to simply pass
+     |  in a valid file path (or URL) and obtain a file object.
+     |  
+     |  Parameters
+     |  ----------
+     |  destpath : str or None, optional
+     |      Path to the directory where the source file gets downloaded to for
+     |      use.  If `destpath` is None, a temporary directory will be created.
+     |      The default path is the current directory.
+     |  
+     |  Notes
+     |  -----
+     |  URLs require a scheme string (``http://``) to be used, without it they
+     |  will fail::
+     |  
+     |      >>> repos = DataSource()
+     |      >>> repos.exists('www.google.com/index.html')
+     |      False
+     |      >>> repos.exists('http://www.google.com/index.html')
+     |      True
+     |  
+     |  Temporary directories are deleted when the DataSource is deleted.
+     |  
+     |  Examples
+     |  --------
+     |  ::
+     |  
+     |      >>> ds = DataSource('/home/guido')
+     |      >>> urlname = 'http://www.google.com/index.html'
+     |      >>> gfile = ds.open('http://www.google.com/index.html')  # remote file
+     |      >>> ds.abspath(urlname)
+     |      '/home/guido/www.google.com/site/index.html'
+     |  
+     |      >>> ds = DataSource(None)  # use with temporary file
+     |      >>> ds.open('/home/guido/foobar.txt')
+     |      <open file '/home/guido.foobar.txt', mode 'r' at 0x91d4430>
+     |      >>> ds.abspath('/home/guido/foobar.txt')
+     |      '/tmp/tmpy4pgsP/home/guido/foobar.txt'
+     |  
+     |  Methods defined here:
+     |  
+     |  ____ddeell____(self)
+     |  
+     |  ____iinniitt____(self, destpath='.')
+     |      Create a DataSource with a local path at destpath.
+     |  
+     |  aabbssppaatthh(self, path)
+     |      Return absolute path of file in the DataSource directory.
+     |      
+     |      If `path` is an URL, then `abspath` will return either the location
+     |      the file exists locally or the location it would exist when opened
+     |      using the `open` method.
+     |      
+     |      Parameters
+     |      ----------
+     |      path : str
+     |          Can be a local file or a remote URL.
+     |      
+     |      Returns
+     |      -------
+     |      out : str
+     |          Complete path, including the `DataSource` destination directory.
+     |      
+     |      Notes
+     |      -----
+     |      The functionality is based on `os.path.abspath`.
+     |  
+     |  eexxiissttss(self, path)
+     |      Test if path exists.
+     |      
+     |      Test if `path` exists as (and in this order):
+     |      
+     |      - a local file.
+     |      - a remote URL that has been downloaded and stored locally in the
+     |        `DataSource` directory.
+     |      - a remote URL that has not been downloaded, but is valid and
+     |        accessible.
+     |      
+     |      Parameters
+     |      ----------
+     |      path : str
+     |          Can be a local file or a remote URL.
+     |      
+     |      Returns
+     |      -------
+     |      out : bool
+     |          True if `path` exists.
+     |      
+     |      Notes
+     |      -----
+     |      When `path` is an URL, `exists` will return True if it's either
+     |      stored locally in the `DataSource` directory, or is a valid remote
+     |      URL.  `DataSource` does not discriminate between the two, the file
+     |      is accessible if it exists in either location.
+     |  
+     |  ooppeenn(self, path, mode='r', encoding=None, newline=None)
+     |      Open and return file-like object.
+     |      
+     |      If `path` is an URL, it will be downloaded, stored in the
+     |      `DataSource` directory and opened from there.
+     |      
+     |      Parameters
+     |      ----------
+     |      path : str
+     |          Local file path or URL to open.
+     |      mode : {'r', 'w', 'a'}, optional
+     |          Mode to open `path`.  Mode 'r' for reading, 'w' for writing,
+     |          'a' to append. Available modes depend on the type of object
+     |          specified by `path`. Default is 'r'.
+     |      encoding : {None, str}, optional
+     |          Open text file with given encoding. The default encoding will be
+     |          what `io.open` uses.
+     |      newline : {None, str}, optional
+     |          Newline to use when reading text file.
+     |      
+     |      Returns
+     |      -------
+     |      out : file object
+     |          File object.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  ____ddiicctt____
+     |      dictionary for instance variables (if defined)
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+    
+    class MMaacchhAArr(builtins.object)
+     |  Diagnosing machine parameters.
+     |  
+     |  Attributes
+     |  ----------
+     |  ibeta : int
+     |      Radix in which numbers are represented.
+     |  it : int
+     |      Number of base-`ibeta` digits in the floating point mantissa M.
+     |  machep : int
+     |      Exponent of the smallest (most negative) power of `ibeta` that,
+     |      added to 1.0, gives something different from 1.0
+     |  eps : float
+     |      Floating-point number ``beta**machep`` (floating point precision)
+     |  negep : int
+     |      Exponent of the smallest power of `ibeta` that, subtracted
+     |      from 1.0, gives something different from 1.0.
+     |  epsneg : float
+     |      Floating-point number ``beta**negep``.
+     |  iexp : int
+     |      Number of bits in the exponent (including its sign and bias).
+     |  minexp : int
+     |      Smallest (most negative) power of `ibeta` consistent with there
+     |      being no leading zeros in the mantissa.
+     |  xmin : float
+     |      Floating point number ``beta**minexp`` (the smallest [in
+     |      magnitude] usable floating value).
+     |  maxexp : int
+     |      Smallest (positive) power of `ibeta` that causes overflow.
+     |  xmax : float
+     |      ``(1-epsneg) * beta**maxexp`` (the largest [in magnitude]
+     |      usable floating value).
+     |  irnd : int
+     |      In ``range(6)``, information on what kind of rounding is done
+     |      in addition, and on how underflow is handled.
+     |  ngrd : int
+     |      Number of 'guard digits' used when truncating the product
+     |      of two mantissas to fit the representation.
+     |  epsilon : float
+     |      Same as `eps`.
+     |  tiny : float
+     |      Same as `xmin`.
+     |  huge : float
+     |      Same as `xmax`.
+     |  precision : float
+     |      ``- int(-log10(eps))``
+     |  resolution : float
+     |      ``- 10**(-precision)``
+     |  
+     |  Parameters
+     |  ----------
+     |  float_conv : function, optional
+     |      Function that converts an integer or integer array to a float
+     |      or float array. Default is `float`.
+     |  int_conv : function, optional
+     |      Function that converts a float or float array to an integer or
+     |      integer array. Default is `int`.
+     |  float_to_float : function, optional
+     |      Function that converts a float array to float. Default is `float`.
+     |      Note that this does not seem to do anything useful in the current
+     |      implementation.
+     |  float_to_str : function, optional
+     |      Function that converts a single float to a string. Default is
+     |      ``lambda v:'%24.16e' %v``.
+     |  title : str, optional
+     |      Title that is printed in the string representation of `MachAr`.
+     |  
+     |  See Also
+     |  --------
+     |  finfo : Machine limits for floating point types.
+     |  iinfo : Machine limits for integer types.
+     |  
+     |  References
+     |  ----------
+     |  .. [1] Press, Teukolsky, Vetterling and Flannery,
+     |         "Numerical Recipes in C++," 2nd ed,
+     |         Cambridge University Press, 2002, p. 31.
+     |  
+     |  Methods defined here:
+     |  
+     |  ____iinniitt____(self, float_conv=<class 'float'>, int_conv=<class 'int'>, float_to_float=<class 'float'>, float_to_str=<function MachAr.<lambda> at 0x7ff9a75f2488>, title='Python floating point number')
+     |      float_conv - convert integer to float (array)
+     |      int_conv   - convert float (array) to integer
+     |      float_to_float - convert float array to float
+     |      float_to_str - convert array float to str
+     |      title        - description of used floating point numbers
+     |  
+     |  ____ssttrr____(self)
+     |      Return str(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  ____ddiicctt____
+     |      dictionary for instance variables (if defined)
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+    
+    class MMoodduulleeDDeepprreeccaattiioonnWWaarrnniinngg(builtins.DeprecationWarning)
+     |  Module deprecation warning.
+     |  
+     |  The nose tester turns ordinary Deprecation warnings into test failures.
+     |  That makes it hard to deprecate whole modules, because they get
+     |  imported by default. So this is a special Deprecation warning that the
+     |  nose tester will let pass without making tests fail.
+     |  
+     |  Method resolution order:
+     |      ModuleDeprecationWarning
+     |      builtins.DeprecationWarning
+     |      builtins.Warning
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.DeprecationWarning:
+     |  
+     |  ____iinniitt____(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  ____ddeellaattttrr____(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____sseettaattttrr____(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  wwiitthh__ttrraacceebbaacckk(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  ____ccaauussee____
+     |      exception cause
+     |  
+     |  ____ccoonntteexxtt____
+     |      exception context
+     |  
+     |  ____ddiicctt____
+     |  
+     |  ____ssuupppprreessss__ccoonntteexxtt____
+     |  
+     |  ____ttrraacceebbaacckk____
+     |  
+     |  aarrggss
+    
+    class PPaacckkaaggeeLLooaaddeerr(builtins.object)
+     |  Methods defined here:
+     |  
+     |  ____ccaallll____(self, *packages, **options)
+     |      Load one or more packages into parent package top-level namespace.
+     |      
+     |      This function is intended to shorten the need to import many
+     |      subpackages, say of scipy, constantly with statements such as
+     |      
+     |        import scipy.linalg, scipy.fftpack, scipy.etc...
+     |      
+     |      Instead, you can say:
+     |      
+     |        import scipy
+     |        scipy.pkgload('linalg','fftpack',...)
+     |      
+     |      or
+     |      
+     |        scipy.pkgload()
+     |      
+     |      to load all of them in one call.
+     |      
+     |      If a name which doesn't exist in scipy's namespace is
+     |      given, a warning is shown.
+     |      
+     |      Parameters
+     |      ----------
+     |       *packages : arg-tuple
+     |            the names (one or more strings) of all the modules one
+     |            wishes to load into the top-level namespace.
+     |       verbose= : integer
+     |            verbosity level [default: -1].
+     |            verbose=-1 will suspend also warnings.
+     |       force= : bool
+     |            when True, force reloading loaded packages [default: False].
+     |       postpone= : bool
+     |            when True, don't load packages [default: False]
+     |  
+     |  ____iinniitt____(self, verbose=False, infunc=False)
+     |      Manages loading packages.
+     |  
+     |  eerrrroorr(self, mess)
+     |  
+     |  ggeett__ppkkggddooccss(self)
+     |      Return documentation summary of subpackages.
+     |  
+     |  lloogg(self, mess)
+     |  
+     |  wwaarrnn(self, mess)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  ____ddiicctt____
+     |      dictionary for instance variables (if defined)
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+    
+    class RRaannkkWWaarrnniinngg(builtins.UserWarning)
+     |  Issued by `polyfit` when the Vandermonde matrix is rank deficient.
+     |  
+     |  For more information, a way to suppress the warning, and an example of
+     |  `RankWarning` being issued, see `polyfit`.
+     |  
+     |  Method resolution order:
+     |      RankWarning
+     |      builtins.UserWarning
+     |      builtins.Warning
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.UserWarning:
+     |  
+     |  ____iinniitt____(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  ____ddeellaattttrr____(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____sseettaattttrr____(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  wwiitthh__ttrraacceebbaacckk(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  ____ccaauussee____
+     |      exception cause
+     |  
+     |  ____ccoonntteexxtt____
+     |      exception context
+     |  
+     |  ____ddiicctt____
+     |  
+     |  ____ssuupppprreessss__ccoonntteexxtt____
+     |  
+     |  ____ttrraacceebbaacckk____
+     |  
+     |  aarrggss
+    
+    class TTooooHHaarrddEErrrroorr(builtins.RuntimeError)
+     |  Unspecified run-time error.
+     |  
+     |  Method resolution order:
+     |      TooHardError
+     |      builtins.RuntimeError
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.RuntimeError:
+     |  
+     |  ____iinniitt____(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  ____ddeellaattttrr____(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____sseettaattttrr____(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  wwiitthh__ttrraacceebbaacckk(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  ____ccaauussee____
+     |      exception cause
+     |  
+     |  ____ccoonntteexxtt____
+     |      exception context
+     |  
+     |  ____ddiicctt____
+     |  
+     |  ____ssuupppprreessss__ccoonntteexxtt____
+     |  
+     |  ____ttrraacceebbaacckk____
+     |  
+     |  aarrggss
+    
+    class VViissiibblleeDDeepprreeccaattiioonnWWaarrnniinngg(builtins.UserWarning)
+     |  Visible deprecation warning.
+     |  
+     |  By default, python will not show deprecation warnings, so this class
+     |  can be used when a very visible warning is helpful, for example because
+     |  the usage is most likely a user bug.
+     |  
+     |  Method resolution order:
+     |      VisibleDeprecationWarning
+     |      builtins.UserWarning
+     |      builtins.Warning
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors defined here:
+     |  
+     |  ____wweeaakkrreeff____
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.UserWarning:
+     |  
+     |  ____iinniitt____(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  ____ddeellaattttrr____(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  ____ggeettaattttrriibbuuttee____(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____sseettaattttrr____(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  wwiitthh__ttrraacceebbaacckk(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  ____ccaauussee____
+     |      exception cause
+     |  
+     |  ____ccoonntteexxtt____
+     |      exception context
+     |  
+     |  ____ddiicctt____
+     |  
+     |  ____ssuupppprreessss__ccoonntteexxtt____
+     |  
+     |  ____ttrraacceebbaacckk____
+     |  
+     |  aarrggss
+    
+    bbooooll88 = class bool_(generic)
+     |  NumPy's Boolean type.  Character code: ``?``.  Alias: bool8
+     |  
+     |  Method resolution order:
+     |      bool_
+     |      generic
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____aanndd____(self, value, /)
+     |      Return self&value.
+     |  
+     |  ____bbooooll____(self, /)
+     |      self != 0
+     |  
+     |  ____eeqq____(self, value, /)
+     |      Return self==value.
+     |  
+     |  ____ggee____(self, value, /)
+     |      Return self>=value.
+     |  
+     |  ____ggtt____(self, value, /)
+     |      Return self>value.
+     |  
+     |  ____hhaasshh____(self, /)
+     |      Return hash(self).
+     |  
+     |  ____iinnddeexx____(self, /)
+     |      Return self converted to an integer, if self is suitable for use as an index into a list.
+     |  
+     |  ____llee____(self, value, /)
+     |      Return self<=value.
+     |  
+     |  ____lltt____(self, value, /)
+     |      Return self<value.
+     |  
+     |  ____nnee____(self, value, /)
+     |      Return self!=value.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ____oorr____(self, value, /)
+     |      Return self|value.
+     |  
+     |  ____rraanndd____(self, value, /)
+     |      Return value&self.
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____rroorr____(self, value, /)
+     |      Return value|self.
+     |  
+     |  ____rrxxoorr____(self, value, /)
+     |      Return value^self.
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  ____xxoorr____(self, value, /)
+     |      Return self^value.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from generic:
+     |  
+     |  ____aabbss____(self, /)
+     |      abs(self)
+     |  
+     |  ____aadddd____(self, value, /)
+     |      Return self+value.
+     |  
+     |  ____aarrrraayy____(...)
+     |      sc.__array__(|type) return 0-dim array
+     |  
+     |  ____aarrrraayy__wwrraapp____(...)
+     |      sc.__array_wrap__(obj) return scalar from array
+     |  
+     |  ____ccooppyy____(...)
+     |  
+     |  ____ddeeeeppccooppyy____(...)
+     |  
+     |  ____ddiivvmmoodd____(self, value, /)
+     |      Return divmod(self, value).
+     |  
+     |  ____ffllooaatt____(self, /)
+     |      float(self)
+     |  
+     |  ____fflloooorrddiivv____(self, value, /)
+     |      Return self//value.
+     |  
+     |  ____ffoorrmmaatt____(...)
+     |      NumPy array scalar formatter
+     |  
+     |  ____ggeettiitteemm____(self, key, /)
+     |      Return self[key].
+     |  
+     |  ____iinntt____(self, /)
+     |      int(self)
+     |  
+     |  ____iinnvveerrtt____(self, /)
+     |      ~self
+     |  
+     |  ____llsshhiifftt____(self, value, /)
+     |      Return self<<value.
+     |  
+     |  ____mmoodd____(self, value, /)
+     |      Return self%value.
+     |  
+     |  ____mmuull____(self, value, /)
+     |      Return self*value.
+     |  
+     |  ____nneegg____(self, /)
+     |      -self
+     |  
+     |  ____ppooss____(self, /)
+     |      +self
+     |  
+     |  ____ppooww____(self, value, mod=None, /)
+     |      Return pow(self, value, mod).
+     |  
+     |  ____rraadddd____(self, value, /)
+     |      Return value+self.
+     |  
+     |  ____rrddiivvmmoodd____(self, value, /)
+     |      Return divmod(value, self).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rrfflloooorrddiivv____(self, value, /)
+     |      Return value//self.
+     |  
+     |  ____rrllsshhiifftt____(self, value, /)
+     |      Return value<<self.
+     |  
+     |  ____rrmmoodd____(self, value, /)
+     |      Return value%self.
+     |  
+     |  ____rrmmuull____(self, value, /)
+     |      Return value*self.
+     |  
+     |  ____rroouunndd____(...)
+     |  
+     |  ____rrppooww____(self, value, mod=None, /)
+     |      Return pow(value, self, mod).
+     |  
+     |  ____rrrrsshhiifftt____(self, value, /)
+     |      Return value>>self.
+     |  
+     |  ____rrsshhiifftt____(self, value, /)
+     |      Return self>>value.
+     |  
+     |  ____rrssuubb____(self, value, /)
+     |      Return value-self.
+     |  
+     |  ____rrttrruueeddiivv____(self, value, /)
+     |      Return value/self.
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssiizzeeooff____(...)
+     |      __sizeof__() -> int
+     |      size of object in memory, in bytes
+     |  
+     |  ____ssuubb____(self, value, /)
+     |      Return self-value.
+     |  
+     |  ____ttrruueeddiivv____(self, value, /)
+     |      Return self/value.
+     |  
+     |  aallll(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aannyy(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aarrggmmaaxx(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aarrggmmiinn(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aarrggssoorrtt(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aassttyyppee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  bbyytteesswwaapp(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class so as to
+     |      provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  cchhoooossee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  cclliipp(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccoommpprreessss(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccoonnjj(...)
+     |  
+     |  ccoonnjjuuggaattee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccooppyy(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccuummpprroodd(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccuummssuumm(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ddiiaaggoonnaall(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  dduummpp(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  dduummppss(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ffiillll(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ffllaatttteenn(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ggeettffiieelldd(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  iitteemm(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  iitteemmsseett(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  mmaaxx(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  mmeeaann(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  mmiinn(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  nneewwbbyytteeoorrddeerr(...)
+     |      newbyteorder(new_order='S')
+     |      
+     |      Return a new `dtype` with a different byte order.
+     |      
+     |      Changes are also made in all fields and sub-arrays of the data type.
+     |      
+     |      The `new_order` code can be any from the following:
+     |      
+     |      * 'S' - swap dtype from current to opposite endian
+     |      * {'<', 'L'} - little endian
+     |      * {'>', 'B'} - big endian
+     |      * {'=', 'N'} - native order
+     |      * {'|', 'I'} - ignore (no change to byte order)
+     |      
+     |      Parameters
+     |      ----------
+     |      new_order : str, optional
+     |          Byte order to force; a value from the byte order specifications
+     |          above.  The default value ('S') results in swapping the current
+     |          byte order. The code does a case-insensitive check on the first
+     |          letter of `new_order` for the alternatives above.  For example,
+     |          any of 'B' or 'b' or 'biggish' are valid to specify big-endian.
+     |      
+     |      
+     |      Returns
+     |      -------
+     |      new_dtype : dtype
+     |          New `dtype` object with the given change to the byte order.
+     |  
+     |  nnoonnzzeerroo(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  pprroodd(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ppttpp(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ppuutt(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  rraavveell(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  rreeppeeaatt(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  rreesshhaappee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  rreessiizzee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  rroouunndd(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  sseeaarrcchhssoorrtteedd(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  sseettffiieelldd(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  sseettffllaaggss(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class so as to
+     |      provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ssoorrtt(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ssqquueeeezzee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ssttdd(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ssuumm(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  sswwaappaaxxeess(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ttaakkee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ttoobbyytteess(...)
+     |  
+     |  ttooffiillee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ttoolliisstt(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ttoossttrriinngg(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ttrraaccee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ttrraannssppoossee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  vvaarr(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  vviieeww(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from generic:
+     |  
+     |  TT
+     |      transpose
+     |  
+     |  ____aarrrraayy__iinntteerrffaaccee____
+     |      Array protocol: Python side
+     |  
+     |  ____aarrrraayy__pprriioorriittyy____
+     |      Array priority.
+     |  
+     |  ____aarrrraayy__ssttrruucctt____
+     |      Array protocol: struct
+     |  
+     |  bbaassee
+     |      base object
+     |  
+     |  ddaattaa
+     |      pointer to start of data
+     |  
+     |  ddttyyppee
+     |      get array data-descriptor
+     |  
+     |  ffllaaggss
+     |      integer value of flags
+     |  
+     |  ffllaatt
+     |      a 1-d view of scalar
+     |  
+     |  iimmaagg
+     |      imaginary part of scalar
+     |  
+     |  iitteemmssiizzee
+     |      length of one element in bytes
+     |  
+     |  nnbbyytteess
+     |      length of item in bytes
+     |  
+     |  nnddiimm
+     |      number of array dimensions
+     |  
+     |  rreeaall
+     |      real part of scalar
+     |  
+     |  sshhaappee
+     |      tuple of array dimensions
+     |  
+     |  ssiizzee
+     |      number of elements in the gentype
+     |  
+     |  ssttrriiddeess
+     |      tuple of bytes steps in each dimension
+    
+    class bbooooll__(generic)
+     |  NumPy's Boolean type.  Character code: ``?``.  Alias: bool8
+     |  
+     |  Method resolution order:
+     |      bool_
+     |      generic
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  ____aanndd____(self, value, /)
+     |      Return self&value.
+     |  
+     |  ____bbooooll____(self, /)
+     |      self != 0
+     |  
+     |  ____eeqq____(self, value, /)
+     |      Return self==value.
+     |  
+     |  ____ggee____(self, value, /)
+     |      Return self>=value.
+     |  
+     |  ____ggtt____(self, value, /)
+     |      Return self>value.
+     |  
+     |  ____hhaasshh____(self, /)
+     |      Return hash(self).
+     |  
+     |  ____iinnddeexx____(self, /)
+     |      Return self converted to an integer, if self is suitable for use as an index into a list.
+     |  
+     |  ____llee____(self, value, /)
+     |      Return self<=value.
+     |  
+     |  ____lltt____(self, value, /)
+     |      Return self<value.
+     |  
+     |  ____nnee____(self, value, /)
+     |      Return self!=value.
+     |  
+     |  ____nneeww____(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ____oorr____(self, value, /)
+     |      Return self|value.
+     |  
+     |  ____rraanndd____(self, value, /)
+     |      Return value&self.
+     |  
+     |  ____rreepprr____(self, /)
+     |      Return repr(self).
+     |  
+     |  ____rroorr____(self, value, /)
+     |      Return value|self.
+     |  
+     |  ____rrxxoorr____(self, value, /)
+     |      Return value^self.
+     |  
+     |  ____ssttrr____(self, /)
+     |      Return str(self).
+     |  
+     |  ____xxoorr____(self, value, /)
+     |      Return self^value.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from generic:
+     |  
+     |  ____aabbss____(self, /)
+     |      abs(self)
+     |  
+     |  ____aadddd____(self, value, /)
+     |      Return self+value.
+     |  
+     |  ____aarrrraayy____(...)
+     |      sc.__array__(|type) return 0-dim array
+     |  
+     |  ____aarrrraayy__wwrraapp____(...)
+     |      sc.__array_wrap__(obj) return scalar from array
+     |  
+     |  ____ccooppyy____(...)
+     |  
+     |  ____ddeeeeppccooppyy____(...)
+     |  
+     |  ____ddiivvmmoodd____(self, value, /)
+     |      Return divmod(self, value).
+     |  
+     |  ____ffllooaatt____(self, /)
+     |      float(self)
+     |  
+     |  ____fflloooorrddiivv____(self, value, /)
+     |      Return self//value.
+     |  
+     |  ____ffoorrmmaatt____(...)
+     |      NumPy array scalar formatter
+     |  
+     |  ____ggeettiitteemm____(self, key, /)
+     |      Return self[key].
+     |  
+     |  ____iinntt____(self, /)
+     |      int(self)
+     |  
+     |  ____iinnvveerrtt____(self, /)
+     |      ~self
+     |  
+     |  ____llsshhiifftt____(self, value, /)
+     |      Return self<<value.
+     |  
+     |  ____mmoodd____(self, value, /)
+     |      Return self%value.
+     |  
+     |  ____mmuull____(self, value, /)
+     |      Return self*value.
+     |  
+     |  ____nneegg____(self, /)
+     |      -self
+     |  
+     |  ____ppooss____(self, /)
+     |      +self
+     |  
+     |  ____ppooww____(self, value, mod=None, /)
+     |      Return pow(self, value, mod).
+     |  
+     |  ____rraadddd____(self, value, /)
+     |      Return value+self.
+     |  
+     |  ____rrddiivvmmoodd____(self, value, /)
+     |      Return divmod(value, self).
+     |  
+     |  ____rreedduuccee____(...)
+     |      helper for pickle
+     |  
+     |  ____rrfflloooorrddiivv____(self, value, /)
+     |      Return value//self.
+     |  
+     |  ____rrllsshhiifftt____(self, value, /)
+     |      Return value<<self.
+     |  
+     |  ____rrmmoodd____(self, value, /)
+     |      Return value%self.
+     |  
+     |  ____rrmmuull____(self, value, /)
+     |      Return value*self.
+     |  
+     |  ____rroouunndd____(...)
+     |  
+     |  ____rrppooww____(self, value, mod=None, /)
+     |      Return pow(value, self, mod).
+     |  
+     |  ____rrrrsshhiifftt____(self, value, /)
+     |      Return value>>self.
+     |  
+     |  ____rrsshhiifftt____(self, value, /)
+     |      Return self>>value.
+     |  
+     |  ____rrssuubb____(self, value, /)
+     |      Return value-self.
+     |  
+     |  ____rrttrruueeddiivv____(self, value, /)
+     |      Return value/self.
+     |  
+     |  ____sseettssttaattee____(...)
+     |  
+     |  ____ssiizzeeooff____(...)
+     |      __sizeof__() -> int
+     |      size of object in memory, in bytes
+     |  
+     |  ____ssuubb____(self, value, /)
+     |      Return self-value.
+     |  
+     |  ____ttrruueeddiivv____(self, value, /)
+     |      Return self/value.
+     |  
+     |  aallll(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aannyy(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aarrggmmaaxx(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aarrggmmiinn(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aarrggssoorrtt(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  aassttyyppee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  bbyytteesswwaapp(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class so as to
+     |      provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  cchhoooossee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  cclliipp(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccoommpprreessss(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccoonnjj(...)
+     |  
+     |  ccoonnjjuuggaattee(...)
+     |      Not implemented (virtual attribute)
+     |      
+     |      Class generic exists solely to derive numpy scalars from, and possesses,
+     |      albeit unimplemented, all the attributes of the ndarray class
+     |      so as to provide a uniform API.
+     |      
+     |      See Also
+     |      --------
+     |      The corresponding attribute of the derived class of interest.
+     |  
+     |  ccooppyy(...)
+     |      Not implemented (virtual attribute)
+     |      
+   
